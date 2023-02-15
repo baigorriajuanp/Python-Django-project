@@ -1,0 +1,19 @@
+{% extends 'main-template2.html' %}
+
+    {% block contenido %}
+        <br><br>
+        {% if request.user.is_staff %}
+         <a href='{% url "Cinemas" %}'>Crear nuevo cine </a> &emsp;
+        {% endif %}
+         <br><br>
+        <h1>BUSCAR UN CINE</h1>
+        <br>
+    
+        <form action= "/cineproyecto/find-cinema-get/" method="GET">
+
+            <input type="text" name = "nombre"> 
+            <input type="submit" value="BUSCAR">
+
+        </form>
+        <br><br>
+    {% endblock contenido %}

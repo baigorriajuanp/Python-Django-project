@@ -1,0 +1,63 @@
+{% extends 'main-template.html' %}
+
+{% block contenido %}
+
+<div class="tail-top">
+  <div class="tail-bottom">
+    <div id="main">
+      <div id="content">
+        <div class="line-hor"></div>
+        <div class="box">
+          <div class="border-right">
+            <div class="border-left">
+              <div class="inner">
+                <a href='{% url "BlogCreation" %}'>Crear nueva entrada </a> &emsp;
+                {% if request.user.is_staff %}
+                  <a href='{% url "AproveBlog" %}'>Pendientes Aprobación </a> &emsp;
+                {% endif %}
+                <h3>Entradas <span>Recientes</span></h3>
+                            
+                <p>Cada miembro de nuestra comunidad aporta su mirada de las novedades, comentarios y experiencias del mundo del Cine. Sumate con tu aporte!.</p>
+                
+                  <ul class="list">
+                
+                    {% for last in lastblogs %}
+        
+                      <li><img src="{{last.img.url}}" style= "max-width:20%; height:auto;" /><a href='{% url "BlogDetail" last.id %}'>{{last.title}}</a><br />
+                      {{last.subtitle}} by {{last.author}}. ({{last.date}})</li>
+                    
+                    {% endfor %}
+
+                  </div>
+                  
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <h3>Todos Nuestros <span>Blogs</span></h3>
+          <ul>
+
+            {% for blog in object_list %}
+              {% if blog.aprove == True %}
+
+              <li>{{blog.title}} by {{blog.author}} -- {{blog.date}} &emsp;
+              <a href='{% url "BlogDetail" blog.id %}'> Detalles </a>&emsp;
+              {% if request.user.is_staff %}
+              <a href='{% url "BlogDelete" blog.id %}'> Eliminar </a>
+              {% endif %}
+              </li>
+
+              {% endif %}
+            {% endfor %}
+            
+          </ul>
+          <br><br>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+ {% endblock contenido%}

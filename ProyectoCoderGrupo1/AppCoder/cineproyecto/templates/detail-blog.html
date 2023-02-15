@@ -1,0 +1,17 @@
+{% extends 'main-template2.html' %}
+
+    {% block contenido %}
+
+       <br><br>
+        
+        <h3>{{object.title}} </h3>
+        <h3> <span>{{object.subtitle}}</span></h3>
+        <div class="img-box1 alt"><img src="{{object.img.url}}" style= "max-width:50%; height:auto;" /></div>
+        <p class="p1"> {{object.body}} </p>
+        <p> {{object.date}} -- {{object.author}}</p>
+        
+
+        <br><br>
+        <a href='{% url "AllPages" %}'> Regresar </a>
+
+    {% endblock contenido %}

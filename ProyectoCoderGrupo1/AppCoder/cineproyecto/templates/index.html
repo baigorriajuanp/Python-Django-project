@@ -1,0 +1,49 @@
+{% extends 'main-template.html' %}
+<head>
+    {% load static %}
+
+    <title>Cinema World</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="{% static 'cineproyecto/css/style.css' %}" rel="stylesheet" type="text/css" />
+
+    {% block contenido %}
+      <body>
+
+        
+        <div class="tail-top">
+            <div class="tail-bottom">
+              <div id="main">
+                <div id="content">
+                    <div id="slogan">
+                      <div class="image png"></div>
+                      <div class="inside">
+                        {% if request.user.is_authenticated %}
+                                    <h4> ¡Bienvenido {{user.first_name}} ({{user.username}})! </h4>
+                        {% endif  %}
+                   
+                        <h2>Tu Web de Cine<span>Te está esperando</span></h2>
+                        <p>Todas las novedades y las películas que te gustan en un solo lugar. Sumate.</p>
+                        <div class="wrapper"><a href="{% url 'About' %}" class="link1"><span><span>Nosotros...</span></span></a></div>
+                      </div>
+                    </div>        
+                  </div>
+
+                <div id="content">
+                  <div class="box">
+                    <div class="border-right">
+                        <div class="border-left">
+                            <div class="inner">
+                                <h3>Bienvenido a <b>Cinema</b> <span>Center</span></h3> 
+                                    <div class="img-box1"><img src="{% static 'cineproyecto/images/1page-img5.jpg' %}" style= "max-width:25%; height:auto;" />Cine proyecto fue fundado en abril del 2022 y tiene la finalidad de acercarles toda la información respecto del mundo del cine. Películas, actores, cines, directores. Todo para que tengas la información a la orden del día. Podes disfrutar de nuestro chat para compartir experiencias en vivo con los demas usuarios!</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              </div> 
+            </div>
+            </div>  
+        </div> 
+      </body>
+    {% endblock contenido%}

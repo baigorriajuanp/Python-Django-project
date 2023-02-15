@@ -1,0 +1,31 @@
+{% extends 'main-template2.html' %}
+
+    {% block contenido %}
+        <br><br>
+        <h4>Título: {{object.name}}</h4>
+        Director/es: 
+                {% for director in object.dir.all %}
+                    <li> <a href="{% url 'DirectorDetail' director.id %}">{{director}}</a></li><br>
+                {% endfor %}
+        Actor/es:
+                {% for actor in object.act.all %}
+                    <li> <a href="{% url 'ActorDetail' actor.id %}"> {{actor }}</a> </li>
+                {% endfor %}
+                <br>
+       Fecha de estreno: {{object.date}}
+
+       <br><br>
+
+        <div>
+
+            <iframe width="500" height="300" src="{{object.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+        </div>
+
+
+
+
+        <br><br>
+        <a href='{% url "Movieslist" %}'> Regresar </a>
+
+    {% endblock contenido %}
